@@ -1,0 +1,344 @@
+/* ===================== */
+/* =Variables */
+/* ===================== */
+:root {
+  --clr-neutral-100: hsl(0, 0%, 100%); /* White */
+  --clr-base-200: hsl(210, 46%, 95%); /* Light Grayish Blue */
+  --clr-base-400: hsl(212, 23%, 69%); /* Grayish Blue */
+  --clr-base-600: hsl(214, 17%, 51%); /* Desaturated Dark Blue */
+  --clr-base-800: hsl(217, 19%, 35%); /* Very Dark Grayish Blue */
+
+  /* Colors */
+  --fs-100: 0.75rem; /* 12px */
+  --fs-150: 0.8125rem; /* 13px */
+  --fs-200: 0.875rem; /* 14px */
+  --fs-400: 1rem; /* 16px */
+  --fs-600: 1.125rem; /* 18px */
+  --fs-650: 1.25rem; /* 20px */
+  --fs-800: 1.5rem; /* 24px */
+
+  /* Fonts */
+  --ff: "Manrope", sans-serif;
+
+  --fs-body: var(--fs-150);
+  --fs-heading: var(--fs-400);
+
+  --fw-300: 300;
+  --fw-400: 400;
+  --fw-500: 500;
+  --fw-600: 600;
+  --fw-700: 700;
+
+  --shadow-l: 0 2.5rem 2.5rem -0.625rem rgba(201, 213, 255, 0.5);
+  --radius-full: 9999px;
+
+  --fs-h1: clamp(1rem, calc(1rem + ((1vw - 0.2rem) * 0.4545)), 1.25rem);
+}
+
+/* ===================== */
+/* =Reset CSS */
+/* ===================== */
+
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+/*
+  2. Remove default margin
+*/
+* {
+  margin: 0;
+}
+/*
+  Typographic tweaks!
+  3. Add accessible line-height
+  4. Improve text rendering
+*/
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+/*
+  5. Improve media defaults
+*/
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+/*
+  6. Remove built-in form typography styles
+*/
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+/*
+  7. Avoid text overflows
+*/
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/* ===================== */
+/* =Global Styles */
+/* ===================== */
+
+body {
+  font-family: var(--ff);
+  /* font-size: var(--fs-body); */
+  letter-spacing: 0.05em;
+  color: var(--clr-base-800);
+  background-color: var(--clr-base-200);
+  margin: 0;
+  padding: 0;
+
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Card component */
+.card {
+  max-width: 20.4375rem;
+  background-color: var(--clr-neutral-100);
+  border-radius: 0.5rem;
+  /* overflow: hidden; */
+  box-shadow: var(--shadow-l);
+  position: relative;
+}
+
+.card__image-wrapper {
+  overflow: hidden;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
+.card__image {
+  width: 100%;
+  height: 12.5rem;
+  object-fit: cover;
+}
+
+.card__container {
+  padding: 2rem 2rem 1.375rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.card__title {
+  font-size: var(--fs-h1);
+  font-weight: var(--fw-600);
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+}
+
+.card__description {
+  font-size: var(--fs-150);
+  line-height: 1.55;
+  letter-spacing: 0.02em;
+  color: var(--clr-base-600);
+}
+
+.card__footer {
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.card__share-button.--active {
+  background-color: var(--clr-base-600);
+
+  svg {
+    fill: var(--clr-neutral-100);
+  }
+}
+
+.links-wrapper {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-left: 1rem;
+}
+
+.author {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.author__avatar {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+}
+
+.author__name {
+  font-size: var(--fs-150);
+  font-weight: var(--fw-600);
+}
+
+.author__date {
+  font-size: var(--fs-150);
+  color: var(--clr-base-400);
+}
+
+.card__share-button {
+  content: "";
+  width: 2rem;
+  height: 2rem;
+  border: 0;
+  cursor: pointer;
+  border-radius: var(--radius-full);
+  background-color: var(--clr-base-200);
+  margin-left: auto;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 10;
+
+  svg {
+    fill: var(--clr-base-800);
+  }
+}
+
+.card__share-options {
+  background-color: var(--clr-base-800);
+  height: 100%;
+  border-bottom-right-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+  display: none;
+}
+
+.card__share-options.--active {
+  display: flex;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.popover__wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-inline: 2rem;
+  height: 100%;
+}
+
+.card__share-text {
+  text-transform: uppercase;
+  letter-spacing: 0.31em;
+  color: var(--clr-base-400);
+}
+
+.share__links {
+  display: none;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* ===================== */
+/* =Media Queries */
+/* ===================== */
+/* Leave enough space for the popover. switch to vertical before a resize */
+@media screen and (min-width: 70em) {
+  .card {
+    max-width: 45.625em;
+    display: flex;
+  }
+
+  .card__image {
+    height: unset;
+    object-position: 0;
+    border-radius: 0;
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+    width: 40%;
+  }
+
+  .card__content-wrapper {
+    width: 62%;
+    padding: 2rem 2.5rem;
+  }
+
+  .card__container {
+    padding: 0;
+  }
+
+  .card__footer {
+    margin-top: 1.2rem;
+    padding: 0;
+  }
+
+  .author__name {
+    letter-spacing: 0.01em;
+  }
+
+  .card__share-options {
+    background: transparent;
+  }
+
+  .popover__wrapper {
+    background: var(--clr-base-800);
+    border-radius: 0.8rem;
+    position: relative;
+    padding: 1.8rem 2.3125rem;
+  }
+
+  .card__share-options.--active {
+    width: max-content;
+    border-radius: 0.5rem;
+    left: unset;
+    right: -7.2rem;
+    bottom: 4.5rem;
+    padding-bottom: 1rem;
+    filter: drop-shadow(0 0.5rem 0.5rem rgba(0, 0, 0, 0.2));
+  }
+
+  .popover__wrapper::after {
+    content: "";
+    /* background-color: red; */
+    position: absolute;
+    bottom: -0.8rem;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 0;
+    height: 0;
+    border-top: 1rem solid var(--clr-base-800);
+    border-left: 1rem solid transparent;
+    border-right: 1rem solid transparent;
+  }
+}
