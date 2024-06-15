@@ -2,33 +2,28 @@
 const shareBtn = document.getElementById("share-btn");
 const shareOptions = document.getElementById("share-options");
 
-// Toggle the share options state
-function toggleShareOptions() {
-  shareBtn.classList.toggle("--active");
-  shareOptions.classList.toggle("--active");
+// function to hide the options
+function closeShareOptions() {
+  shareBtn.setAttribute("aria-expanded", "false");
 }
 
-// Update the share button state (back to default)
-function updateShareOptionsState() {
-  shareBtn.classList.remove("--active");
-  shareOptions.classList.remove("--active");
-}
-
-// add event listeners
+// when the button is clicked check if the attribute aria-expanded is true or false
 shareBtn.addEventListener("click", () => {
-  toggleShareOptions();
+  const expanded = shareBtn.getAttribute("aria-expanded") === "true" || false;
+  // toggle the attribute aria-expanded
+  shareBtn.setAttribute("aria-expanded", !expanded);
 });
 
-// Update the share button state on escape key press
-document.addEventListener("keyup", (e) => {
-  if (e.key === "Escape") {
-    updateShareOptionsState();
+// when I click outside the button, hide the options
+document.addEventListener("click", (event) => {
+  if (event.target !== shareBtn) {
+    closeShareOptions();
   }
 });
 
-// Update the share button state when the user clicks outside the button
-document.addEventListener("click", (e) => {
-  if (!shareBtn.contains(e.target)) {
-    updateShareOptionsState();
+// when I press the escape key, hide the options
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    closeShareOptions();
   }
 });

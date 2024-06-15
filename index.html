@@ -43,17 +43,21 @@
               />
               <div class="author__description">
                 <p class="author__name">Michelle Appleton</p>
-                <p class="author__date">28 Jun 2020</p>
+                <p class="author__date">
+                  <span class="sr-only">Published the </span>28 Jun 2020
+                </p>
               </div>
             </div>
             <button
               id="share-btn"
               aria-expanded="false"
-              class="card__share-button"
-              title="Share this article on social media."
+              aria-label="Share this article on social media."
+              aria-controls="share-options"
+              class="card__share-button js-disclosure-btn"
             >
               <svg
                 focusable="false"
+                aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 width="15"
                 height="13"
@@ -64,7 +68,7 @@
               </svg>
             </button>
             <div id="share-options" class="card__share-options">
-              <div class="popover__wrapper">
+              <div class="disclosure__wrapper">
                 <p class="card__share-text">Share</p>
                 <div class="links-wrapper">
                   <a

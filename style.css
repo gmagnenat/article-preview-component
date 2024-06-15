@@ -157,10 +157,11 @@ body {
   padding: 1rem 2rem;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   position: relative;
 }
 
-.card__share-button.--active {
+.card__share-button[aria-expanded="true"] {
   background-color: var(--clr-base-600);
 
   svg {
@@ -216,6 +217,7 @@ body {
 
   svg {
     fill: var(--clr-base-800);
+    pointer-events: none;
   }
 }
 
@@ -224,23 +226,26 @@ body {
   height: 100%;
   border-bottom-right-radius: 0.5rem;
   border-bottom-left-radius: 0.5rem;
-  display: none;
-}
-
-.card__share-options.--active {
-  display: flex;
   width: 100%;
   position: absolute;
   bottom: 0;
   left: 0;
 }
 
-.popover__wrapper {
+.disclosure__wrapper {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   padding-inline: 2rem;
   height: 100%;
+}
+
+.card__share-button[aria-expanded="false"] + .card__share-options {
+  display: none;
+}
+
+.card__share-button[aria-expanded="true"] + .card__share-options {
+  display: block;
 }
 
 .card__share-text {
@@ -268,7 +273,7 @@ body {
 /* ===================== */
 /* =Media Queries */
 /* ===================== */
-/* Leave enough space for the popover. switch to vertical before a resize */
+/* Leave enough space for the disclosure. switch to vertical before a resize */
 @media screen and (min-width: 70em) {
   .card {
     max-width: 45.625em;
@@ -306,14 +311,14 @@ body {
     background: transparent;
   }
 
-  .popover__wrapper {
+  .disclosure__wrapper {
     background: var(--clr-base-800);
     border-radius: 0.8rem;
     position: relative;
     padding: 1.8rem 2.3125rem;
   }
 
-  .card__share-options.--active {
+  .card__share-options {
     width: max-content;
     border-radius: 0.5rem;
     left: unset;
@@ -323,7 +328,7 @@ body {
     filter: drop-shadow(0 0.5rem 0.5rem rgba(0, 0, 0, 0.2));
   }
 
-  .popover__wrapper::after {
+  .disclosure__wrapper::after {
     content: "";
     position: absolute;
     bottom: -0.8rem;
