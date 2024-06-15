@@ -55,8 +55,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [https://www.frontendmentor.io/solutions/article-preview-component-cssjs-a4MRQYOXa5](https://www.frontendmentor.io/solutions/article-preview-component-cssjs-a4MRQYOXa5)
+- Live Site URL: [https://delicate-froyo-cea77b.netlify.app/](https://delicate-froyo-cea77b.netlify.app/)
 
 ## My process
 
