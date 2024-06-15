@@ -12,6 +12,7 @@ shareBtn.addEventListener("click", () => {
   const expanded = shareBtn.getAttribute("aria-expanded") === "true" || false;
   // toggle the attribute aria-expanded
   shareBtn.setAttribute("aria-expanded", !expanded);
+  // TODO: set focus on the first link when the options are shown
 });
 
 // when I click outside the button, hide the options
